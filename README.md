@@ -5,7 +5,9 @@ Ocr 命令行工具， 调用 API Windows.Media.Ocr.Cli 支持多种语言识别
 ### 命令行执行
 ```powershell
 PS C:\Tools>Windows.Media.Ocr.Cli.exe .\x.png
+9·哪位科学家发现了电磁感应现象？
 ```
+![x-out.png](https://github.com/zh-h/Windows.Media.Ocr.Cli/blob/master/Windows.Media.Ocr.Cli/x-out.png?raw=true)
 
 ### 查看帮助
 ```powershell
