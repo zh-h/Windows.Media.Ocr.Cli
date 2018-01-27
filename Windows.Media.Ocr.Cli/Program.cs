@@ -1,9 +1,20 @@
-﻿using Windows.Storage.Streams;
-using Windows.Graphics.Imaging;
-using Windows.Storage;
+﻿//*********************************************************
+//
+// Copyright (c) zh-h. All rights reserved.
+// This code is licensed under the MIT License (MIT).
+// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+//
+//*********************************************************
+
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using Windows.Graphics.Imaging;
+using Windows.Storage;
+using Windows.Storage.Streams;
 
 namespace Windows.Media.Ocr.Cli
 {
@@ -57,7 +68,7 @@ namespace Windows.Media.Ocr.Cli
 
         static void PrintHelp()
         {
-            Console.WriteLine(@"Usage: Windows.Media.Ocr-CLI.exe [options...] <image file path>
+            Console.WriteLine(@"Usage: Windows.Media.Ocr.Cli.exe [options...] <image file path>
 Example: Windows.Media.Ocr.Cli.exe x.png
 -l      <language>  Default:zh-Hans-CN   Specify language to reconizing
 -s      Show all supported languages
