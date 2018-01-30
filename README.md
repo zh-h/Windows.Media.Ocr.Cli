@@ -1,7 +1,10 @@
-# Windows.Media.Ocr.Cli
-Ocr 命令行工具， 调用 API Windows.Media.Ocr.Cli 支持多种语言识别。
+# [Windows.Media.Ocr.Cli]( https://github.com/zh-h/Windows.Media.Ocr.Cli)
+Ocr 命令行工具， **本地调用** UWP API Windows.Media.Ocr 支持多种语言识别。
 
 ## 使用
+### 下载
+https://github.com/zh-h/Windows.Media.Ocr.Cli/releases
+
 ### 命令行执行
 ```powershell
 PS C:\Tools>Windows.Media.Ocr.Cli.exe .\x.png
@@ -20,21 +23,21 @@ Example: Windows.Media.Ocr.Cli.exe x.png
 ```
 
 ### 运行依赖
-1. 需要Windows 10 系统，其他 Windows Server 没有进行验证
-
-### 开发依赖
-1. Visual Studio 2017 (通用 Windows 平台开发，.NET 桌面开发)
+1. 需要 Windows 10 系统，其他平台没有测试，理论上可以支持所有支持 UWP 的设备，包括 Xbox 甚至安装 Windows 10 IoT 的树莓派，不太了解 Xamarin 能不能引入 UWP 的 runtime，如果能引入 UWP 就可以用在 iOS 和 Android 平台。
 
 ## 功能
 - [x] 文字识别
 - [ ] 输出图片显示文字区域方块
-- [ ] 提供提高对比参数
+- [ ] 提供提高对比参数（有时后明明图片很清晰，但是不调高对比度什么文字都没识别）
 
 ## 参考
-1. Get Started With Optical Character Recognition with the OCR Library for Windows Runtime
-<div align="center">
+- Get Started With Optical Character Recognition with the OCR Library for Windows Runtime <div align="center">
   <a href="https://www.youtube.com/watch?v=9TXl0sUHEMg"><img src="https://img.youtube.com/vi/9TXl0sUHEMg/0.jpg" alt="Get Started With Optical Character Recognition with the OCR Library for Windows Runtime"></a>
 </div>
+
+- 微软官方文档 https://docs.microsoft.com/en-us/uwp/api/Windows.Media.Ocr
+- 官方示例 APP https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/OCR
+
 
 ## 声明
 仅供学习参考，请勿用于服务器端生产环境。
