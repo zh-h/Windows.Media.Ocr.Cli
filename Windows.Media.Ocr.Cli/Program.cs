@@ -100,9 +100,9 @@ Example: Windows.Media.Ocr.Cli.exe x.png
                         string line = "";
                         foreach (var word in tempLine.Words)
                         {
-                            line += word.Text;
+                            line += word.Text + " ";
                         }
-                        result += line + "\n";
+                        result += line + Environment.NewLine;
                     }
                 }
             }
