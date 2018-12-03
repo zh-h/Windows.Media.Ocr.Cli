@@ -86,8 +86,8 @@ Example: Windows.Media.Ocr.Cli.exe x.png
             IRandomAccessStream randomAccessStream = await storageFile.OpenReadAsync();
             BitmapDecoder decoder = await BitmapDecoder.CreateAsync(randomAccessStream);
             SoftwareBitmap softwareBitmap = await decoder.GetSoftwareBitmapAsync(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Premultiplied);
-            Globalization.Language lang = new Globalization.Language(language);            
-
+            Globalization.Language lang = new Globalization.Language(language);
+            string space = language.Contains("zh") ? "" : " "; 
             string result = null;
             if (OcrEngine.IsLanguageSupported(lang))
             {
@@ -100,7 +100,7 @@ Example: Windows.Media.Ocr.Cli.exe x.png
                         string line = "";
                         foreach (var word in tempLine.Words)
                         {
-                            line += word.Text + " ";
+                            line += word.Text + space;
                         }
                         result += line + Environment.NewLine;
                     }
