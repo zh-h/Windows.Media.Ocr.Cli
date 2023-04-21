@@ -82,8 +82,9 @@ namespace Windows.Media.Ocr.Cli
         static void PrintHelp()
         {
             Console.WriteLine(@"Usage: Windows.Media.Ocr.Cli.exe [options...] <image file path>
-Example: Windows.Media.Ocr.Cli.exe x.png
+Example: Windows.Media.Ocr.Cli.exe -o c:\res.txt x.png
 -l      <language>  Default:zh-Hans-CN   Specify language to reconizing
+-o      <output_path> Output the resalut to a file, It should end with a file name, such as res.txt.
 -s      Show all supported languages
 -h      Show help like this
 ");
