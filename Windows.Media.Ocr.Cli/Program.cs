@@ -11,6 +11,7 @@
 
 using System;
 using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 using Windows.Graphics.Imaging;
 using Windows.Storage;
@@ -22,11 +23,12 @@ namespace Windows.Media.Ocr.Cli
     {
         static void Main(string[] args)
         {
-#if DEBUG
-            args = new string[] { "..\\..\\x.png" };
-#endif
+            //#if DEBUG
+            //            args = new string[] { "..\\..\\x.png" };
+            //#endif
             string imagePath = null;
             string language = "zh-Hans-CN";
+            string outputPath = "";
             for (var i = 0; i < args.Length; i++)
             {
                 var arg = args[i];
@@ -50,10 +52,21 @@ namespace Windows.Media.Ocr.Cli
                     i++;
                     continue;
                 }
+                if (arg == "-o" || arg == "--output")
+                {
+                    outputPath = args[i + 1];
+                    i++;
+                    continue;
+                }
                 imagePath = arg;
+
                 try
                 {
                     var result = RecognizeAsync(imagePath, language).GetAwaiter().GetResult();
+                    if (outputPath != "")
+                    {
+                        WriteTextToFile(result, outputPath);
+                    }
                     Console.WriteLine(result);
                 }
                 catch (Exception e)
@@ -61,9 +74,9 @@ namespace Windows.Media.Ocr.Cli
                     Console.WriteLine("ERROR: " + e.Message);
                 }
             }
-#if DEBUG
-            Console.ReadLine();
-#endif
+            //#if DEBUG
+            //          Console.ReadLine();
+            //#endif
         }
 
         static void PrintHelp()
@@ -87,7 +100,7 @@ Example: Windows.Media.Ocr.Cli.exe x.png
             BitmapDecoder decoder = await BitmapDecoder.CreateAsync(randomAccessStream);
             SoftwareBitmap softwareBitmap = await decoder.GetSoftwareBitmapAsync(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Premultiplied);
             Globalization.Language lang = new Globalization.Language(language);
-            string space = language.Contains("zh") ? "" : " "; 
+            string space = language.Contains("zh") ? "" : " ";
             string result = null;
             if (OcrEngine.IsLanguageSupported(lang))
             {
@@ -116,6 +129,18 @@ Example: Windows.Media.Ocr.Cli.exe x.png
             {
                 return result;
             });
+        }
+        static void WriteTextToFile(string text, string filePath)
+        {
+            // 创建一个输出流
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                // 将字符串转换成UTF-8编码并写入文件
+                using (var writer = new StreamWriter(fileStream, Encoding.UTF8))
+                {
+                    writer.Write(text);
+                }
+            }
         }
     }
 }
