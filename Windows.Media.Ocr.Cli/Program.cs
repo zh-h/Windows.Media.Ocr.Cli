@@ -23,9 +23,9 @@ namespace Windows.Media.Ocr.Cli
     {
         static void Main(string[] args)
         {
-            //#if DEBUG
-            //            args = new string[] { "..\\..\\x.png" };
-            //#endif
+#if DEBUG
+            args = new string[] { "..\\..\\x.png" };
+#endif
             string imagePath = null;
             string language = "zh-Hans-CN";
             string outputPath = "";
@@ -74,9 +74,9 @@ namespace Windows.Media.Ocr.Cli
                     Console.WriteLine("ERROR: " + e.Message);
                 }
             }
-            //#if DEBUG
-            //          Console.ReadLine();
-            //#endif
+#if DEBUG
+            Console.ReadLine();
+#endif
         }
 
         static void PrintHelp()
